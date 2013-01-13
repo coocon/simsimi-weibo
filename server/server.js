@@ -1,11 +1,7 @@
 /**
-* 
-* @file 主要用来辅助预订预订会议室,
-* 1.查询到所需的会议室(一般是还未到开放预订时间)
-* 2.启动meeting.js 新建一个代理server
-* 3.浏览器设置代理地址为 此server地址
-* 4.点击预订 此时如果没有预订成功 会一直重复提交预订请求，直到成功
-* @author gengpeng@baidu.com
+*  
+* 用来创建一个server 获取simsimi的回复后 修改text/html : utf-8 不然nodejs会报错
+* 可能是node的解析兼容性有问题 。。。
 */
 var net = require('net');
 var fs = require('fs');
