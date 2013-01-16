@@ -19,10 +19,10 @@ function getHtml(type, callback) {
         agent: false,
         method: 'GET'
     };
-    console.log('hi ', options);
+    //console.log('hi ', options);
     var req = http.request(options, function(res) {
-        console.log('STATUS: ' + res.statusCode);
-        console.log('HEADERS: ' + JSON.stringify(res.headers));
+        //console.log('STATUS: ' + res.statusCode);
+        //console.log('HEADERS: ' + JSON.stringify(res.headers));
         cookie = res.headers['set-cookie'].toString();
         cookie = cookie.split(';').shift();
         cookie += ';sagree=true';
@@ -79,6 +79,7 @@ function buffer_add(buf1, buf2) {
 function ask(question, callback) {
     //每次初始化
     var buffer = new Buffer(0);
+    question = encodeURIComponent(question);
 
     if (!ready) {
         init(function() {
@@ -91,10 +92,10 @@ function ask(question, callback) {
         //console.log('hi...............................', opts);
         var req = http.get(opts, function(res) {
             if (res.body) {
-                console.log(res.body); 
+          //      console.log(res.body); 
             }
             res.on('data', function (chunk) {
-                console.log('BODY: ' + chunk);
+           //     console.log('BODY: ' + chunk);
                 buffer = buffer_add(buffer, chunk);
             });
             

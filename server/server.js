@@ -90,11 +90,11 @@ net.createServer(function(client) {
                     //this is our right request o~~~~~~~
                     var str = data.toString('utf8');
                    
-                    console.log('server on data:', str);
+                    //console.log('server on data:', str);
                     str = str.replace(/Content\-Type\: text\/html/, 'Content-Type: application/json');
                     str = str.replace(/text\/html\: utf\-8\r\n/, '');
                     data = new Buffer(str, 'utf8');
-                    console.log(data.toString('utf8'))
+                    //console.log(data.toString('utf8'))
                     client.write(data); 
                 });
 
