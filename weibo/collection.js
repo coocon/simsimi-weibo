@@ -6,14 +6,13 @@ var cp = require('child_process')
   , latestId = require('./setting').latestId
   , end_id = null 
   , list = [];
-var reg = /abc/;
+
 function collection(max_id) {
 	var at_cp, hasMore = true;
 	if (max_id) at_cp = cp.fork('./at.js', [end_id, max_id]);
 	else at_cp = cp.fork('./at.js');
 	at_cp.on('message', function(data) {
 		var len = data.length;
-
 		if (!end_id) {
 			end_id = data[0].mid;
 		}
