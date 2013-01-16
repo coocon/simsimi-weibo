@@ -3,10 +3,19 @@
  */
 
 var _ = require('underscore')
-  , getAtList = require('./weibo').getAtList;
+  , getAtList = require('./weibo').getAtList
+  , max_id = process.argv[3]
+  , end_id = process.argv[2]
+  , opt = {
+  	'page': '1',
+	'count': '15'
+  }; 
 
+/*
+ * 将返回的结果转化为数组。
+ */
 function result(data) {
-	var keys = ['mid', 'uid', 'name', 'wvr']; 
+	var keys = ['mid', 'uid', 'name', 'wvr'],
 	data = _.pick(data, keys),
 	values = _.values(data),
 	result = [];
@@ -21,11 +30,20 @@ function result(data) {
 	return result;
 }
 
-getAtList({
-	'page': 1,
-	'count': 15
-}, function(response, body) {
-	//将返回值转化一下
+/*
+ * 回调函数。
+ */
+function callback(response, body) {
 	process.send(result(body));
 	process.exit(1);
-});
+}
+
+if (max_id) {
+	_.extend(opt, {
+		'max_id': max_id,
+		'end_id': end_id,
+		'pre_page': 1
+	});
+}
+getAtList(opt, callback);
+

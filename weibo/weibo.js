@@ -17,11 +17,11 @@ var request = require('request')
   	//必须写，否则可能请求失败。
 	'Referer': util.format('http://weibo.com/u/%s', uid),
   	'Cookie': cookie	
-}
+  }
   ,	urls = {
     atList: 'http://weibo.com/aj/at/mblog/list',
     reply: 'http://weibo.com/aj/comment/add'
-};
+  };
 
 /*
  * GET
@@ -65,7 +65,6 @@ function reply(opt, cb) {
 	},	
 	data = {
     	'act':'post',
-    	//'uid':'2349352117',
     	'forward':'0',
     	'isroot':'0',
     	'location':'home',
@@ -89,7 +88,6 @@ function reply(opt, cb) {
 		}
 		if (response.statusCode == 200) {
 			cb(response, querystring.parse(body));
-			console.log(querystring.parse(body));
 		}
 	});
 

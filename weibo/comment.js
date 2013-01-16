@@ -8,9 +8,8 @@ var reply = require('./weibo').reply
 reply({
 	'mid': mid,
 	'uid': uid,
-	'content': '我爱北京天安门' + mid + uid
+	'content': '我爱北京天安门' + mid + uid + Math.random()
 }, function(response, body) {
-	console.log(body)
 	process.send(body);
 	process.exit(1);
 });
