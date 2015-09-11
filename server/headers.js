@@ -12,22 +12,22 @@ var makeOptions = function(host, msg, cookie) {
         console.log('say something');
         return null; 
     }
-    var url = 'http://www.simsimi.com';
+    var url = 'www.simsimi.com';
     var url4 = 'http://106.187.43.200';
     var url5 = 'http://127.0.0.1:8888';
-    url5 = host || url5;
     msg = msg || 'hello';
     cookie = cookie || '';
+    cookie = 'uid=68126848; _ga=GA1.2.81101600.1441685343; _gat=1';
     var options =  {
         
         'method': 'GET',
-        'path': '/func/req?msg=' + msg + '&lc=zh',
+        'path': '/requestChat?req=' + msg + '&lc=zh&ft=1.0&uid=68126848',
         'port': port,
-        'hostname': host,
+        'host': url,
         'headers': {
             "Connection": 'keep-alive',
             'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36',
             'Accept-Charset': 'GBK,utf-8;q=0.7,*;q=0.3',
             'Accept-Language': 'zh-CN,zh;q=0.8',
             'X-Requested-With': 'XMLHttpRequest',

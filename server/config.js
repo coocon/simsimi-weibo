@@ -1,7 +1,7 @@
 /**
  * on
  */
-var SERVER_PORT = 9997;
+var SERVER_PORT = 80;
 var SERVER_HOST = '127.0.0.1';
 
 exports.PORT = SERVER_PORT

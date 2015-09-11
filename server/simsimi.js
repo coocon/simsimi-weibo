@@ -1,4 +1,3 @@
-var request = require('request');
 var http = require('http');
 var cookie = null;
 var ready = false;
@@ -16,14 +15,15 @@ function getHtml(type, callback) {
         hostname: 'www.simsimi.com',
         port: 80,
         path: path,
-        agent: false,
+        agent:false,
         method: 'GET'
     };
     //console.log('hi ', options);
     var req = http.request(options, function(res) {
         //console.log('STATUS: ' + res.statusCode);
         //console.log('HEADERS: ' + JSON.stringify(res.headers));
-        cookie = res.headers['set-cookie'].toString();
+        //cookie = res.headers['set-cookie'].toString();
+        cookie = res.headers['set-cookie'] + '';
         cookie = cookie.split(';').shift();
         cookie += ';sagree=true';
 
@@ -49,7 +49,6 @@ function getHtml(type, callback) {
         console.log('problem with request: ' + e.message);
     });
 
-    req.write('data\n');
     // write data to request body
     req.end();
 }
@@ -79,7 +78,6 @@ function buffer_add(buf1, buf2) {
 function ask(question, callback) {
     //每次初始化
     var buffer = new Buffer(0);
-    question = encodeURIComponent(question);
 
     if (!ready) {
         init(function() {
@@ -87,10 +85,11 @@ function ask(question, callback) {
         }); 
     }
     else {
+        question = encodeURIComponent(question);
         // do ask thing
         var opts = headers.makeOptions(null, question, cookie);
         //console.log('hi...............................', opts);
-        var req = http.get(opts, function(res) {
+        var req = http.request(opts, function(res) {
             if (res.body) {
           //      console.log(res.body); 
             }

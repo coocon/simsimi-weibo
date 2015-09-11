@@ -2,9 +2,9 @@
 * @file 测试一下微博 sdk
 */
 
-var simsimi = require('./simsimi.js');
+var simsimi = require('./simsimi');
 
-simsimi.ask('abc', function(res) {
+simsimi.ask('你好', function(res) {
     console.log(res);
 
 })
